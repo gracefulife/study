@@ -1,6 +1,7 @@
 package xyz.gracefulife.blog;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -11,6 +12,12 @@ public class WritePostService {
   private final PostRepository postRepository;
 
   public Mono<Post> write(Post post) {
-    return postRepository.save(post);
+    return Mono.just(post).flatMap(p -> {
+      if (StringUtils.isEmpty(p.getTitle()) || StringUtils.isEmpty(p.getContents())) {
+        return Mono.error(() -> new IllegalArgumentException("Post 의 제목과, 내용은 필수 입력값입니다."));
+      }
+
+      return postRepository.save(p);
+    });
   }
 }
