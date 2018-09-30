@@ -12,11 +12,11 @@ class WritePostServiceSpecs extends Specification {
         // TODO not yet implements
     }
 
-    def '글 제목이 등록되지 않은 경우 IllegalArgumentException 이 발생되어야 합니다.'() {
+    def '글 제목이 입력되지 않은 경우 IllegalArgumentException 이 발생되어야 합니다.'() {
         // TODO not yet implements
     }
 
-    def '글 내용이 등록되지 않은 경우 IllegalArgumentException 이 발생되어야 합니다.'() {
+    def '글 내용이 입력되지 않은 경우 IllegalArgumentException 이 발생되어야 합니다.'() {
         // TODO not yet implements
     }
 }
