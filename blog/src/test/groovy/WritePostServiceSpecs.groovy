@@ -1,11 +1,18 @@
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
+import spock.lang.Subject
+import xyz.gracefulife.blog.PostRepository
+import xyz.gracefulife.blog.WritePostService
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class WritePostServiceSpecs extends Specification {
+    @Subject
+    WritePostService writePostService
+
+    PostRepository postRepository = Mock()
 
     def setup() {
-        // TODO not yet implements
+        writePostService = new WritePostService(postRepository)
     }
 
     def '글은 제목과 내용이 모두 입력되어야 합니다.'() {
