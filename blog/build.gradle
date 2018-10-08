@@ -36,10 +36,6 @@ dependencies {
     runtime('org.springframework.boot:spring-boot-devtools')
     compileOnly('org.projectlombok:lombok')
 
-    // mandatory dependencies for using Spock
-    compile "org.codehaus.groovy:groovy-all:2.4.15"
-    testCompile "org.spockframework:spock-core:1.2-groovy-2.4"
-
     // optional dependencies for using Spock
     testRuntime "org.objenesis:objenesis:2.6"
     // allows mocking of classes without default constructor (together with CGLIB)
@@ -47,6 +43,10 @@ dependencies {
     testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
     testCompile('io.projectreactor:reactor-test')
 
+    // mandatory dependencies for using Spock
+    compile "org.codehaus.groovy:groovy-all:2.4.15"
+    testCompile "org.spockframework:spock-core:1.2-groovy-2.4"
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-2')
     testCompile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-2')
+    testCompile('cglib:cglib-nodep:3.2.1')
 }

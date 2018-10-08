@@ -17,4 +17,8 @@ public class PostResponse implements Serializable {
   static PostResponse from(Post post) {
     return new PostResponse(post.getId(), post.getTitle(), post.getContents());
   }
+
+  public Post to() {
+    return new Post(id, title, contents);
+  }
 }
