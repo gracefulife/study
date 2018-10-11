@@ -10,4 +10,6 @@ public interface PostRepository {
   Flux<Post> findAll();
 
   Mono<Post> findById(String id);
+
+  Mono<String> delete(String id);
 }
