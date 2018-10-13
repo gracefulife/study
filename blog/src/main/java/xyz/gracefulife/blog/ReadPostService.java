@@ -1,9 +1,6 @@
 package xyz.gracefulife.blog;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
-import java.util.function.Function;
 
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -18,7 +15,7 @@ public class ReadPostService {
     return postRepository.findAll().map(PostResponse::from);
   }
 
-  public Mono<PostResponse> findById(String id) {
+  public Mono<PostResponse> findById(Mono<String> id) {
     return postRepository.findById(id).map(PostResponse::from).single();
   }
 }

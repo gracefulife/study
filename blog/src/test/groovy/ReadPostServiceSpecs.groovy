@@ -37,10 +37,10 @@ class ReadPostServiceSpecs extends Specification {
         def notExistPostId = "1A"
 
         and:
-        postRepository.findById(notExistPostId) >> Mono.just(new Post("1A", "제목1", "내용1"))
+        postRepository.findById(Mono.just(notExistPostId)) >> Mono.just(new Post("1A", "제목1", "내용1"))
 
         when:
-        def foundPost = readPostService.findById(notExistPostId).single().block()
+        def foundPost = readPostService.findById(Mono.just(notExistPostId)).single().block()
 
         then:
         foundPost.id == "1A"
@@ -53,10 +53,10 @@ class ReadPostServiceSpecs extends Specification {
         def notExistPostId = "not exist"
 
         and:
-        postRepository.findById(notExistPostId) >> empty()
+        postRepository.findById(Mono.just(notExistPostId)) >> empty()
 
         when:
-        readPostService.findById(notExistPostId).block()
+        readPostService.findById(Mono.just(notExistPostId)).block()
 
         then:
         thrown(NoSuchElementException.class)
