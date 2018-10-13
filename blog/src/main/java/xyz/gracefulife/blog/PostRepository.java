@@ -1,11 +1,11 @@
 package xyz.gracefulife.blog;
 
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface PostRepository {
-
-  Mono<Post> save(Post post);
+public interface PostRepository extends ReactiveCrudRepository<Post, String> {
 
   Flux<Post> findAll();
 

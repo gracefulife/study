@@ -11,6 +11,6 @@ public class DeletePostService {
   private final PostRepository postRepository;
 
   public Mono<String> delete(String id) {
-    return postRepository.delete(id).onErrorMap(IllegalArgumentException::new); // FIXME 모든 에러를 wrap 하지 않아야 함
+    return postRepository.deleteById(id).thenReturn(id);
   }
 }
