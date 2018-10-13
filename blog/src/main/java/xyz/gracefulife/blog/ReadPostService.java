@@ -16,6 +16,12 @@ public class ReadPostService {
   }
 
   public Mono<PostResponse> findById(Mono<String> id) {
-    return postRepository.findById(id).map(PostResponse::from).single();
+    return postRepository.findById(id)
+        .map(PostResponse::from)
+        .single();
+  }
+
+  public Mono<PostResponse> findById(String id) {
+    return findById(Mono.just(id));
   }
 }

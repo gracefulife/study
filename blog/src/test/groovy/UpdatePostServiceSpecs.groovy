@@ -14,21 +14,24 @@ class UpdatePostServiceSpecs extends Specification {
         updatePostService = new UpdatePostService(readPostService, postRepository)
     }
 
-    def '존재하지 않는 ID 를 주고 글을 업데이트 하려 할 경우 NoSuchElementException 이 발생해야 합니다.'() {
+    def '존재하지 않는 ID 를 주고 글을 업데이트 하려 할 경우 IllegalArgumentException 이 발생해야 합니다.'() {
         given:
         def post = new Post("2", "제목1", "내용1")
+        def givenExistId = "1"
+        def givenNotExistId = "2"
 
         and:
         def mockPost = new PostResponse("1", "제목1", "내용1")
-        readPostService.findById("1") >> Mono.just(mockPost)
-        readPostService.findById("2") >> { throw new NoSuchElementException() }
+
+        readPostService.findById(givenExistId) >> Mono.just(mockPost)
+        readPostService.findById(givenNotExistId) >> { throw new IllegalArgumentException() }
         postRepository.save(mockPost.to()) >> Mono.just(mockPost.to())
 
         when:
         updatePostService.update(post).block()
 
         then:
-        thrown(NoSuchElementException.class)
+        thrown(IllegalArgumentException.class)
     }
 
     def '존재하는 ID 의 글을 주고 업데이트 하는 경우 필드의 정보가 새로운 정보로 업데이트 되어야 합니다'() {

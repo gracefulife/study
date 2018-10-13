@@ -34,13 +34,14 @@ class ReadPostServiceSpecs extends Specification {
 
     def '존재하는 ID 를 주고 단일 글을 조회 시 잘 동작하여야 합니다.'() {
         given:
-        def notExistPostId = "1A"
+        def existPostId = "1A"
+        def givenExistIdMono = Mono.just(existPostId)
 
         and:
-        postRepository.findById(Mono.just(notExistPostId)) >> Mono.just(new Post("1A", "제목1", "내용1"))
+        postRepository.findById(givenExistIdMono) >> Mono.just(new Post("1A", "제목1", "내용1"))
 
         when:
-        def foundPost = readPostService.findById(Mono.just(notExistPostId)).single().block()
+        def foundPost = readPostService.findById(givenExistIdMono).single().block()
 
         then:
         foundPost.id == "1A"
@@ -51,12 +52,13 @@ class ReadPostServiceSpecs extends Specification {
     def '존재하지 않는 ID 를 주고 단일 글을 조회 시 NoSuchElementException 이 발생해야 합니다.'() {
         given:
         def notExistPostId = "not exist"
+        def givenNotExistIdMono = Mono.just(notExistPostId)
 
         and:
-        postRepository.findById(Mono.just(notExistPostId)) >> empty()
+        postRepository.findById(givenNotExistIdMono) >> empty()
 
         when:
-        readPostService.findById(Mono.just(notExistPostId)).block()
+        readPostService.findById(givenNotExistIdMono).block()
 
         then:
         thrown(NoSuchElementException.class)
