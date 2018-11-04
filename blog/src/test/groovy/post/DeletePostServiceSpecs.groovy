@@ -1,3 +1,5 @@
+package post
+
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 import spock.lang.Subject

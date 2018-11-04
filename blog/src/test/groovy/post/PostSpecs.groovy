@@ -1,3 +1,5 @@
+package post
+
 import spock.lang.Specification
 import xyz.gracefulife.blog.post.Post
 
