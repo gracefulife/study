@@ -1,5 +1,7 @@
 package xyz.gracefulife.blog;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
@@ -8,11 +10,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post implements Serializable {
-  private String id;
+  @Id private String id;
   private String title;
   private String contents;
 
