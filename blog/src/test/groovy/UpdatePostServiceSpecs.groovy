@@ -1,7 +1,11 @@
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 import spock.lang.Subject
-import xyz.gracefulife.blog.*
+import xyz.gracefulife.blog.post.Post
+import xyz.gracefulife.blog.post.PostRepository
+import xyz.gracefulife.blog.post.PostResponse
+import xyz.gracefulife.blog.post.ReadPostService
+import xyz.gracefulife.blog.post.UpdatePostService
 
 class UpdatePostServiceSpecs extends Specification {
     @Subject

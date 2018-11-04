@@ -1,4 +1,4 @@
-package xyz.gracefulife.blog;
+package xyz.gracefulife.blog.post;
 
 import java.io.Serializable;
 

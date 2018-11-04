@@ -1,8 +1,8 @@
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 import spock.lang.Subject
-import xyz.gracefulife.blog.DeletePostService
-import xyz.gracefulife.blog.PostRepository
+import xyz.gracefulife.blog.post.DeletePostService
+import xyz.gracefulife.blog.post.PostRepository
 
 class DeletePostServiceSpecs extends Specification {
     @Subject

@@ -2,10 +2,10 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 import spock.lang.Subject
-import xyz.gracefulife.blog.Post
-import xyz.gracefulife.blog.PostRepository
-import xyz.gracefulife.blog.PostResponse
-import xyz.gracefulife.blog.ReadPostService
+import xyz.gracefulife.blog.post.Post
+import xyz.gracefulife.blog.post.PostRepository
+import xyz.gracefulife.blog.post.PostResponse
+import xyz.gracefulife.blog.post.ReadPostService
 
 import static org.hamcrest.Matchers.containsInAnyOrder
 import static reactor.core.publisher.Mono.empty

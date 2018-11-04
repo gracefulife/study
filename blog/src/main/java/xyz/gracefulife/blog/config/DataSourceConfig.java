@@ -1,4 +1,4 @@
-package xyz.gracefulife.blog;
+package xyz.gracefulife.blog.config;
 
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
